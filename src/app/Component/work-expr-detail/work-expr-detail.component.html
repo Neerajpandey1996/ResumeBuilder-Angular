@@ -1,0 +1,84 @@
+
+<div class="container">
+
+    <section class="form-dark">
+        <div class="card card-image" style="background-image: url('assets/images/backgroundImg8.jpg'); background-repeat: no-repeat;background-size: cover;">
+
+            <!--Header-->
+            <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+
+                <div class="row d-flex justify-content-center">
+                    <h3 class="white-text mb-3 pt-3 font-weight-bold">Work Experience  </h3>
+                </div>
+                <!--Header closed -->
+            </div>
+
+            <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+
+                <form [formGroup]="workExprDetailsForm" (ngSubmit)="onSubmit()">
+
+                    <div class="md-form">
+                        <label for="orgName" class="font-weight-light">Organization Name</label>
+                        <input type="text" class="form-control white-text" id="orgName" formControlName="orgName"
+                            placeholder="Enter your organization Name ">
+                    </div>
+                    <div *ngIf="orgName.invalid && (orgName.dirty || orgName.touched)" class="alert alert-danger">
+                        <div *ngIf="orgName.errors.required">
+                             Name is Required    
+                        </div>
+                        <div *ngIf="orgName.errors.minlength">
+                       Name can not be less then 3 char     
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="md-form">
+                        <label for="fromYear" class="col-5 col-form-label">year Of joining</label>
+                         <input class="form-control" type="date" value="2011-08-19" id="fromYear" formControlName="fromYear">
+                      </div>
+                      <div *ngIf="fromYear.invalid && (fromYear.dirty || fromYear.touched)" class="alert alert-danger">
+                        <div *ngIf="fromYear.errors.required">
+                             Required Field   
+                        </div>
+                      </div>
+
+                      <br>
+                      <div class="md-form">
+                          <label for="toYear" class="col-5 col-form-label">year Of completion</label>
+                           <input class="form-control" type="date" value="2011-08-19" id="toYear" formControlName="toYear">
+                        </div>
+                        
+                    <br>
+                    <div class="md-form">
+                        <label for="role" class="font-weight-light">Role</label>
+                        <input type="text" class="form-control white-text" id="role" formControlName="role"
+                            placeholder="Enter your Role ">
+                    </div>
+                    <div *ngIf="role.invalid && (role.dirty || role.touched)" class="alert alert-danger">
+                        <div *ngIf="role.errors.required">
+                             Role Field is Required    
+                        </div>
+                    </div>
+                    <br>
+                    <div class="md-form">
+                        <label for="discription" class="font-weight-light">Description</label>
+                        <textarea class="form-control white-text" id="discription" formControlName="discription"
+                            placeholder="Enter your Description "></textarea>
+                    </div>
+                    <div *ngIf="discription.invalid && (discription.dirty || discription.touched)" class="alert alert-danger">
+                        <div *ngIf="discription.errors.required">
+                             Please Describe Your Job Role   
+                        </div>
+                        <div *ngIf="discription.errors.maxlength">
+                            can not write More then 1000 words     
+                       </div>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary" [disabled]="!workExprDetailsForm.valid">Next</button>
+                </form>
+            </div>
+
+        </div>
+        {{file}}
+    </section>
+</div>

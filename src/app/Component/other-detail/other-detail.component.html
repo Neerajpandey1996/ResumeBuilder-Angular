@@ -1,0 +1,54 @@
+
+<div class="container">
+
+    <section class="form-dark">
+        <div class="card card-image" style="background-image: url('assets/images/backgroundImg5.jpg');">
+
+            <!--Header-->
+            <div class="text-black rgba-stylish-strong py-5 px-5 z-depth-4">
+
+                <div class="row d-flex justify-content-center">
+                    <h3 class="white-text mb-3 pt-3 font-weight-bold">Achievements </h3>
+                </div>
+                <!--Header closed -->
+            </div>
+
+            <div class="text-black rgba-stylish-strong py-5 px-5 z-depth-4">
+
+                <form [formGroup]="otherDetailForm" (ngSubmit)="onSubmit()">
+
+                    <div class="md-form">
+                        <label for="name" class="font-weight-light">Name Of Achievement</label>
+                        <input type="text" class="form-control white-text" id="name" formControlName="name"
+                            placeholder="Enter your Achievement Name">
+                    </div>
+                    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                        <div *ngIf="name.errors.required">
+                            Achievement Name is Required    
+                        </div>
+                        <div *ngIf="name.errors.minlength">
+                            Atleast 3 char are required   
+                        </div>
+                    </div>
+
+                    <br>
+                   <div class="md-form">
+                    <label for="description" class="font-weight-light">Description</label>
+                    <input type="text" class="form-control white-text" id="description" formControlName="description"
+                        placeholder="describe Your Achievement in short words">
+                </div>       
+                    <br>
+                    <div class="md-form">
+                        <label for="year" class="col-5 col-form-label">year of Achievement</label>
+                         <input class="form-control" type="date" value="2011-08-19" id="year" formControlName="year">
+                      </div>
+                      
+                      <br>
+                    <button type="submit" class="btn btn-primary" [disabled]="!otherDetailForm.valid">Save And Next</button>
+                    <button class="btn btn-primary" (onClick)="onSkip()">Skip And Next</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+</div>

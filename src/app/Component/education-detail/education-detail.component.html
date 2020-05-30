@@ -1,0 +1,86 @@
+
+<div class="container">
+
+    <section class="form-dark">
+        <div class="card card-image" style="background-image: url('assets/images/backgroundImg4.jpg');">
+
+            <!--Header-->
+            <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+
+                <div class="row d-flex justify-content-center">
+                    <h3 class="white-text mb-3 pt-3 font-weight-bold">Education Details </h3>
+                </div>
+                <!--Header closed -->
+            </div>
+
+            <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+
+                <form [formGroup]="educationDetailForm" (ngSubmit)="onSubmit()">
+
+                    <div class="md-form">
+                        <label for="courseName" class="font-weight-light">Cource Name</label>
+                        <input type="text" class="form-control white-text" id="courseName" formControlName="courseName"
+                            placeholder="Enter your Course Name">
+                    </div>
+                    <div *ngIf="courseName.invalid && (courseName.dirty || courseName.touched)" class="alert alert-danger">
+                        <div *ngIf="courseName.errors.required">
+                            Course Name is Required    
+                        </div>
+                        <div *ngIf="courseName.errors.minlength">
+                        Course Name can not be less then 3 char     
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="md-form">
+                        <label for="schoolName" class="font-weight-light">School Name</label>
+                        <input type="text" class="form-control" id="schoolName" formControlName="schoolName"
+                            placeholder="Enter your schoolName Name">
+                    </div>
+                    <div *ngIf="schoolName.invalid && (schoolName.dirty || schoolName.touched)" class="alert alert-danger">
+                        <div *ngIf="schoolName.errors.required">
+                            school Name is Required    
+                        </div>
+                        <div *ngIf="schoolName.errors.minlength">
+                            School Name can not be less then 3 char     
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="md-form">
+                        <label for="yearOfPassing" class="col-2 col-form-label">year Of Passing</label>
+                         <input class="form-control" type="date" value="2011-08-19" id="yearOfPassing" formControlName="yearOfPassing">
+                      </div>
+                      <div *ngIf="yearOfPassing.invalid && (yearOfPassing.dirty || yearOfPassing.touched)" class="alert alert-danger">
+                        <div *ngIf="yearOfPassing.errors.required">
+                            year Of Passing is Required    
+                        </div>
+                      </div>
+
+                      <br>
+                        <div class="md-form">
+                            <label for="percentage" class="col-2 col-form-label">Percentage</label>
+                            <input class="form-control" type="number" value="42" id="percentage" formControlName="percentage">
+                          </div>
+                          <div *ngIf="percentage.invalid && (percentage.dirty || percentage.touched)" class="alert alert-danger">
+                            <div *ngIf="percentage.errors.required">
+                                percentage is Required    
+                            </div>
+                            <div *ngIf="percentage.errors.max">
+                                percentage can not be more then 100    
+                            </div>
+                            <div *ngIf="percentage.errors.min">
+                                percentage can not be less then 0    
+                            </div>
+                            </div>
+
+                    <br>
+                    <button type="submit" class="btn btn-primary" [disabled]="!educationDetailForm.valid">Save and Next</button>
+                    <button class="btn btn-primary" (onClick)="onSkip()">Skip And Next</button>
+
+                </form>
+            </div>
+
+        </div>
+    </section>
+</div>

@@ -1,0 +1,96 @@
+<div class="container">
+
+    <section class="form-dark">
+        <div class="card card-image" style="background-image: url('assets/images/backgroundImg2.jpg');">
+
+            <!--Header-->
+            <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+
+                <div class="row d-flex justify-content-center">
+                    <h3 class="white-text mb-3 pt-3 font-weight-bold">Basic Details </h3>
+                </div>
+                <!--Header closed -->
+            </div>
+
+            <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+
+                <form [formGroup]="resumeDetailForm" (ngSubmit)="onSubmit()">
+
+                    <div class="md-form">
+                        <label for="name" class="font-weight-light">Full Name</label>
+                        <input type="text" class="form-control white-text" id="name" formControlName="name"
+                            placeholder="Enter your Full Name For Resume Headline">
+                    </div>
+                    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                        <div *ngIf="name.errors.required">
+                        Name is Required    
+                        </div>
+                        <div *ngIf="name.errors.minlength">
+                        Name can not be less then 2 char     
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="md-form">
+                        <label for="mobile" class="font-weight-light">Mobile Number</label>
+                        <input type="text" class="form-control" id="mobile" formControlName="mobile"
+                            placeholder="Enter your Mobile Number with Country Code">
+                    </div>
+                    <div *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)" class="alert alert-danger">
+                        <div *ngIf="mobile.errors.required">
+                            Mobile Number is Required    
+                            </div>
+                            <div *ngIf="mobile.errors.minlength">
+                            Number must be of 12 char including country code      
+                            </div>
+                            <div *ngIf="mobile.errors.maxlength">
+                                Number must be of 12 char including country code      
+                                </div>
+                    </div>
+
+                    <br>
+                    <div class="md-form">
+                        <label for="email" class="font-weight-light">Email address</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                            placeholder="Enter Your email" formControlName="email">
+                        <small id="emailHelp" class="font-weight-bold" style="color: green;">We'll never share your
+                            email with anyone else.</small>
+                    </div>
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                        <div *ngIf="email.errors.required">
+                            Email is Required    
+                            </div>
+                            <div *ngIf="email.errors.email">
+                            Please Enter Correct Email       
+                            </div>
+                    </div>
+
+                    <br>
+                    <div class="md-form">
+                        <label for="linkdIn" class="font-weight-light">Linkedin Id</label>
+                        <input type="text" class="form-control" id="linkdIn" placeholder="Enter Your Linkedin Id"
+                            formControlName="linkdIn">
+                    </div>
+
+                    <br>
+                    <div class="md-form">
+                        <label for="gitId" class="font-weight-light">GitHub ID</label>
+                        <input type="text" class="form-control" id="gitId" placeholder="Enter Your GitHub Id"
+                            formControlName="gitId">
+                    </div>
+
+                    <br>
+                    <div class="md-form">
+                        <label for="declaration" class="font-weight-light">Declaration</label>
+                        <textarea class="form-control" id="gitId" placeholder="Enter Declaration "
+                            formControlName="declaration"></textarea>
+                    </div>
+
+                    <br>
+                    <button type="submit" class="btn btn-primary" [disabled]="!resumeDetailForm.valid">Save And Next</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+</div>

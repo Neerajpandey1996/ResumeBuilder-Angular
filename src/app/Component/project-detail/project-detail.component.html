@@ -1,0 +1,66 @@
+
+<div class="container">
+
+    <section class="form-dark">
+        <div class="card card-image" style="background-image: url('assets/images/backgroundImg6.jpg');">
+
+            <!--Header-->
+            <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+
+                <div class="row d-flex justify-content-center">
+                    <h3 class="white-text mb-3 pt-3 font-weight-bold">Projects </h3>
+                </div>
+                <!--Header closed -->
+            </div>
+
+            <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+
+                <form [formGroup]="projectDetailForm" (ngSubmit)="onSubmit()">
+
+                    <div class="md-form">
+                        <label for="projectName" class="font-weight-light">Name Of Project</label>
+                        <input type="text" class="form-control white-text" id="projectName" formControlName="projectName"
+                            placeholder="Enter your Project Name">
+                    </div>
+                    <div *ngIf="projectName.invalid && (projectName.dirty || projectName.touched)" class="alert alert-danger">
+                        <div *ngIf="projectName.errors.required">
+                            project Name is Required    
+                        </div>
+                        <div *ngIf="projectName.errors.minlength">
+                            Atleast 5 char are required   
+                        </div>
+                    </div>
+
+                    <br>
+                   <div class="md-form">
+                    <label for="projectDiscription" class="font-weight-light">Description</label>
+                    <textarea class="form-control white-text" id="projectDiscription" formControlName="projectDiscription"
+                        placeholder="describe Your project "></textarea>
+                </div>   
+                <div *ngIf="projectDiscription.invalid && (projectDiscription.dirty || projectDiscription.touched)" class="alert alert-danger">
+                    <div *ngIf="projectDiscription.errors.required">
+                        project Discription is Required    
+                    </div>
+                    <div *ngIf="projectDiscription.errors.maxlength">
+                        max 1200 char are allowed   
+                    </div>
+                </div>    
+                    <br>
+                    <div class="md-form">
+                        <label for="year" class="col-5 col-form-label">year of Project Completion </label>
+                         <input class="form-control" type="date" value="2011-08-19" id="year" formControlName="year">
+                      </div>
+                      <div *ngIf="year.invalid && (year.dirty || year.touched)" class="alert alert-danger">
+                        <div *ngIf="year.errors.required">
+                            Completion Year is Required    
+                        </div>
+                        </div>
+                      <br>
+                    <button type="submit" class="btn btn-primary" [disabled]="!projectDetailForm.valid">Save and Next</button>
+                    <button class="btn btn-primary" (onClick)="onSkip()">Skip and Next</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+</div>
